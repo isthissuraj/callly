@@ -1,3 +1,4 @@
+import 'package:callly/screens/create_meeting.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,7 +16,11 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const HomeScreen(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const HomeScreen(),
+        '/createMeeting': (context) => const CreateMeeting(),
+      },
     );
   }
 }
@@ -37,7 +42,9 @@ class HomeScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             ElevatedButton.icon(
-                onPressed: (){},
+                onPressed: (){
+                  Navigator.pushNamed(context, '/createMeeting');
+                },
               icon: const Icon(Icons.add),
               label: const Text('Create Meeting'),
             ),
